@@ -1,0 +1,175 @@
+@import "tailwindcss";
+
+/* ===== BASE THEME VARIABLES ===== */
+/* These create Tailwind utilities like bg-primary, text-primary, etc. */
+@theme {
+  /* Primary Colors */
+  --color-primary: #5caa67;
+  --color-primary-hover: #9bd0a3;
+  --color-primary-active: #357c40;
+
+  /* Semantic Colors */
+  --color-success: #5caa67;
+  --color-warning: #e7e967;
+  --color-error: #d9534f;
+  --color-info: #5caa67;
+
+  /* Neutrals */
+  --color-silver: #dadee6;
+  --color-border-light: #dadee6;
+  --color-text-base: #1b4922;
+  --color-text-secondary: #357c40;
+
+  /* Backgrounds */
+  --color-bg-layout: #f4f8f4;
+  --color-bg-container: #ffffff;
+}
+
+/* ===== THEME-SPECIFIC OVERRIDES ===== */
+/* Ocean Theme */
+[data-theme="ocean"] {
+  --color-primary: #0ea5e9;
+  --color-primary-hover: #38bdf8;
+  --color-primary-active: #0284c7;
+
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #0ea5e9;
+
+  --color-silver: #e2e8f0;
+  --color-border-light: #cbd5e1;
+  --color-text-base: #0f172a;
+  --color-text-secondary: #475569;
+
+  --color-bg-layout: #f8fafc;
+  --color-bg-container: #ffffff;
+}
+
+[data-theme="ocean"].dark {
+  --color-bg-layout: #0c4a6e;
+  --color-bg-container: #1e3a5f;
+  --color-border-light: #3b5875;
+  --color-text-base: #f0f9ff;
+}
+
+/* Sunset Theme */
+[data-theme="sunset"] {
+  --color-primary: #f97316;
+  --color-primary-hover: #fb923c;
+  --color-primary-active: #ea580c;
+
+  --color-success: #10b981;
+  --color-warning: #facc15;
+  --color-error: #dc2626;
+  --color-info: #f97316;
+
+  --color-silver: #fef3c7;
+  --color-border-light: #fed7aa;
+  --color-text-base: #431407;
+  --color-text-secondary: #7c2d12;
+
+  --color-bg-layout: #fffbeb;
+  --color-bg-container: #ffffff;
+}
+
+[data-theme="sunset"].dark {
+  --color-bg-layout: #431407;
+  --color-bg-container: #5c2d12;
+  --color-border-light: #7c2d12;
+  --color-text-base: #fef3c7;
+}
+
+/* Forest Theme */
+[data-theme="forest"] {
+  --color-primary: #10b981;
+  --color-primary-hover: #34d399;
+  --color-primary-active: #059669;
+
+  --color-success: #10b981;
+  --color-warning: #fbbf24;
+  --color-error: #ef4444;
+  --color-info: #10b981;
+
+  --color-silver: #d1fae5;
+  --color-border-light: #a7f3d0;
+  --color-text-base: #064e3b;
+  --color-text-secondary: #047857;
+
+  --color-bg-layout: #f0fdf4;
+  --color-bg-container: #ffffff;
+}
+
+[data-theme="forest"].dark {
+  --color-bg-layout: #064e3b;
+  --color-bg-container: #065f46;
+  --color-border-light: #047857;
+  --color-text-base: #d1fae5;
+}
+
+/* ===== FALCON DARK MODE ===== */
+.dark:not([data-theme="ocean"]):not([data-theme="sunset"]):not([data-theme="forest"]) {
+  --color-bg-layout: #1b4922;
+  --color-bg-container: #26372f;
+  --color-border-light: #4b5c50;
+  --color-text-base: #f0f3f7;
+}
+
+/* ===== GLOBAL STYLES ===== */
+body {
+  background-color: var(--color-bg-layout);
+  color: var(--color-text-base);
+  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: Cairo, Inter, Poppins, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
+}
+
+/* Helper classes for consistent backgrounds */
+.bg-container {
+  background-color: var(--color-bg-container);
+}
+
+/* Smooth transitions for all theme-affected properties */
+* {
+  transition-property: background-color, border-color, color;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+/* --- Fix for mobile sidebar overlay in ProLayout --- */
+.ant-pro-layout .ant-pro-sider,
+.ant-pro-layout .ant-pro-sider.ant-pro-sider-fixed {
+  position: fixed !important;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  z-index: 2000;
+  background: var(--color-bg-container) !important;
+  backdrop-filter: blur(8px);
+}
+
+
+
+
+/* Ensure the overlay behind the sider is opaque */
+.ant-drawer-mask {
+  background-color: rgba(0, 0, 0, 0.55) !important;
+  position: fixed !important;
+}
+
+/* Prevent background scroll when the mobile sider is open */
+body.ant-pro-body-has-sider {
+  overflow: hidden !important;
+}
+
+/* Fix content scroll position reset when drawer closes */
+.ant-pro-layout-content {
+  position: relative;
+  z-index: 1;
+}
