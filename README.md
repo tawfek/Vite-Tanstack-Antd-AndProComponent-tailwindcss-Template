@@ -49,3 +49,5 @@ This template provides a minimal yet powerful setup to get **React** working wit
 > ⚠️ **Note:**  
 > This template is intended for **personal projects and MVPs**.  
 > The file structure may **not be optimized for enterprise-scale applications or large teams**.
+
+> Last update: 2025-10-26
