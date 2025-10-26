@@ -1,73 +1,51 @@
-# React + Vite + Tanstack + Antd + Antd pro + Tailwind + i18n
+# MVP React Template
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This template provides a minimal yet powerful setup to get **React** working with **Vite**, **Ant Design**, **Ant Design Pro Components**, **Tailwind CSS**, and **TanStack Query** & **Router** — all configured for rapid MVP development and personal projects.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🧩 Technologies Used
 
-## React Compiler
+- [**React**](https://react.dev/) — A JavaScript library for building user interfaces.  
+- [**Vite**](https://vitejs.dev/) — Next-generation, lightning-fast frontend tooling.  
+- [**TanStack Query**](https://tanstack.com/query/latest) — Powerful asynchronous state management for React.  
+- [**TanStack Router**](https://tanstack.com/router/latest) — Type-safe, modern router for React applications.  
+- [**Ant Design (Antd)**](https://ant.design/) — A popular React UI framework with rich, enterprise-ready components.  
+- [**Ant Design Pro Components**](https://procomponents.ant.design/) — Advanced layout and component suite built on top of Ant Design.  
+- [**Tailwind CSS**](https://tailwindcss.com/) — Utility-first CSS framework for building responsive, modern UIs.  
+- [**i18next (react-i18next)**](https://react.i18next.com/) — Internationalization framework for multi-language support.
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+---
 
-## Expanding the ESLint configuration
+## ✨ Features
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1. **Offline-first support**  
+2. **Multiple themes**, including Light and Dark modes for each.  
+3. **RTL (Right-to-Left)** layout support.  
+4. **Router with Breadcrumbs** (powered by ProLayout and TanStack Router).  
+5. **Responsive design** for Header and Side Menu.  
+6. **Fully customizable** components and configuration.  
+7. **Multi-language support** — currently Arabic 🇸🇦 and English 🇬🇧.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+---
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 🎨 Theme Previews
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+| Dark Blue | Dark Green (AR) | Light Blue | Light Green (AR) |
+|------------|------------------|-------------|------------------|
+| ![Dark Blue](./dark-blue.png) | ![Dark Green AR](./dark-green-ar.png) | ![Light Blue](./light-blue.png) | ![Light Green AR](./light-green-ar.png) |
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+---
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+## 📱 Mobile View
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+<p align="center">
+  <img src="./light-green-mobile.png" alt="Light Green Mobile" width="45%" style="border-radius:12px; margin-right:10px;" />
+  <img src="./light-green-mobile-menu-open.png" alt="Light Green Mobile Menu Open" width="45%" style="border-radius:12px;" />
+</p>
+
+---
+
+> ⚠️ **Note:**  
+> This template is intended for **personal projects and MVPs**.  
+> The file structure may **not be optimized for enterprise-scale applications or large teams**.
