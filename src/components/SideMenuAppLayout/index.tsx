@@ -2,7 +2,6 @@ import React, { useState, useMemo, useCallback, useEffect } from "react";
 import { ProLayout, type ProLayoutProps } from "@ant-design/pro-components";
 import { useRouter, useRouterState, Link } from "@tanstack/react-router";
 import defaultMenuProps from "./_defaultMenuProps";
-import Logo from "@/assets/antd.svg";
 import { useTranslation } from "react-i18next";
 import {
   MenuFoldOutlined,
@@ -11,6 +10,10 @@ import {
 } from "@ant-design/icons";
 import { Button } from "antd";
 import { Footer } from "../Footer";
+import { ThemeSelector } from "../ThemeSelector";
+import { LanguageSelector } from "../LanguageSelector";
+import LogoPng from "@/assets/logo.png";
+import LogoLabelPng from "@/assets/logo-label.png";
 
 export const SideMenuAppLayout: React.FC<{ children: React.ReactNode }> = ({
   children,
@@ -63,7 +66,13 @@ export const SideMenuAppLayout: React.FC<{ children: React.ReactNode }> = ({
 
   const layoutProps: ProLayoutProps = {
     ...defaultMenuProps,
-    logo: <img src={Logo} alt="Logo" className="self-center max-h-[1.5rem]" />,
+    logo: (
+      <img
+        src={LogoLabelPng}
+        alt="Logo"
+        className="self-center max-h-[1.5rem]"
+      />
+    ),
     layout: "mix",
     collapsed,
     breakpoint: "md", // AntD built-in responsive breakpoint
@@ -98,20 +107,21 @@ export const SideMenuAppLayout: React.FC<{ children: React.ReactNode }> = ({
       );
     },
     menuHeaderRender: () => (
-      <>
+      <span className="flex justify-center items-center  w-full">
         {collapsed ? (
-          <img
-            src="https://gw.alipayobjects.com/zos/rmsportal/KDpgvguMpGfqaHPjicRK.svg"
-            className="w-full min-w-[1.95rem] max-w-[1.6rem]"
-          />
+          <img src={LogoPng} className="w-full min-w-[1.92rem] max-w-[3rem]" />
         ) : (
-          <img src={Logo} className="w-full min-w-[1.95rem] max-h-[1.5rem]" />
+          <img
+            src={LogoLabelPng}
+            className="w-full  max-w-[6.67rem] self-center"
+          />
         )}
-      </>
+      </span>
     ),
     menuFooterRender: (props) => {
       return (
-        <div key="footer" className="w-full flex flex-col gap-4 ">
+        <div key="footer" className="w-full flex flex-col gap-4  ">
+          <LanguageSelector onlyFlagLabel={collapsed} />
           <Button onClick={() => setCollapsed(!collapsed)} type="text">
             {collapsed ? <MenuUnfoldOutlined /> : <MenuFoldOutlined />}
           </Button>
@@ -130,8 +140,19 @@ export const SideMenuAppLayout: React.FC<{ children: React.ReactNode }> = ({
             onClick={() => setCollapsed((prev) => !prev)}
           />
         </div>
-        {_props.collapsed == true && _props.isMobile ? _props.logo : <></>}
-        <div></div> 
+        {_props.collapsed == true && _props.isMobile ? (
+          <div className="  h-full align-middle flex self-center justify-center !w-full">
+            <img
+              src={LogoPng}
+              className="w-full min-w-[1.5rem] max-w-[1.5rem]"
+            />
+          </div>
+        ) : (
+          <></>
+        )}
+        <div className="w-full max-w-[2.5rem] md:!max-w-full   justify-end flex px-2">
+          <ThemeSelector />
+        </div>
       </div>
     ),
     bgLayoutImgList: [

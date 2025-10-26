@@ -23,95 +23,16 @@
   /* Backgrounds */
   --color-bg-layout: #f4f8f4;
   --color-bg-container: #ffffff;
+  --color-evaluated:rgba(27,73,34,0.01);
 }
 
-/* ===== THEME-SPECIFIC OVERRIDES ===== */
-/* Ocean Theme */
-[data-theme="ocean"] {
-  --color-primary: #0ea5e9;
-  --color-primary-hover: #38bdf8;
-  --color-primary-active: #0284c7;
-
-  --color-success: #10b981;
-  --color-warning: #f59e0b;
-  --color-error: #ef4444;
-  --color-info: #0ea5e9;
-
-  --color-silver: #e2e8f0;
-  --color-border-light: #cbd5e1;
-  --color-text-base: #0f172a;
-  --color-text-secondary: #475569;
-
-  --color-bg-layout: #f8fafc;
-  --color-bg-container: #ffffff;
-}
-
-[data-theme="ocean"].dark {
-  --color-bg-layout: #0c4a6e;
-  --color-bg-container: #1e3a5f;
-  --color-border-light: #3b5875;
-  --color-text-base: #f0f9ff;
-}
-
-/* Sunset Theme */
-[data-theme="sunset"] {
-  --color-primary: #f97316;
-  --color-primary-hover: #fb923c;
-  --color-primary-active: #ea580c;
-
-  --color-success: #10b981;
-  --color-warning: #facc15;
-  --color-error: #dc2626;
-  --color-info: #f97316;
-
-  --color-silver: #fef3c7;
-  --color-border-light: #fed7aa;
-  --color-text-base: #431407;
-  --color-text-secondary: #7c2d12;
-
-  --color-bg-layout: #fffbeb;
-  --color-bg-container: #ffffff;
-}
-
-[data-theme="sunset"].dark {
-  --color-bg-layout: #431407;
-  --color-bg-container: #5c2d12;
-  --color-border-light: #7c2d12;
-  --color-text-base: #fef3c7;
-}
-
-/* Forest Theme */
-[data-theme="forest"] {
-  --color-primary: #10b981;
-  --color-primary-hover: #34d399;
-  --color-primary-active: #059669;
-
-  --color-success: #10b981;
-  --color-warning: #fbbf24;
-  --color-error: #ef4444;
-  --color-info: #10b981;
-
-  --color-silver: #d1fae5;
-  --color-border-light: #a7f3d0;
-  --color-text-base: #064e3b;
-  --color-text-secondary: #047857;
-
-  --color-bg-layout: #f0fdf4;
-  --color-bg-container: #ffffff;
-}
-
-[data-theme="forest"].dark {
-  --color-bg-layout: #064e3b;
-  --color-bg-container: #065f46;
-  --color-border-light: #047857;
-  --color-text-base: #d1fae5;
-}
-
+ 
 /* ===== FALCON DARK MODE ===== */
 .dark:not([data-theme="ocean"]):not([data-theme="sunset"]):not([data-theme="forest"]) {
   --color-bg-layout: #1b4922;
   --color-bg-container: #26372f;
   --color-border-light: #4b5c50;
+  --color-evaluated: rgba(46, 58, 43, 0.6);
   --color-text-base: #f0f3f7;
 }
 
@@ -150,7 +71,7 @@ body {
   left: 0;
   height: 100vh;
   z-index: 2000;
-  background: var(--color-bg-container) !important;
+  background: var(--color-evaluated) !important;
   backdrop-filter: blur(8px);
 }
 

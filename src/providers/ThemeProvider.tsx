@@ -6,7 +6,11 @@ import {
   useEffect,
 } from "react";
 
-import type { ThemeName, ThemeMode } from "../types/theme";
+import {
+  type ThemeName,
+  type ThemeMode,
+  isValidThemeName,
+} from "../types/theme";
 
 interface ThemeContextProps {
   themeName: ThemeName;
@@ -35,8 +39,13 @@ const getInitialTheme = (): {
   mode: ThemeMode;
   isDark: boolean;
 } => {
-  const storedName =
-    (localStorage.getItem(THEME_NAME_KEY) as ThemeName) || "falcon";
+  const storedNameInStorage =
+    localStorage.getItem(THEME_NAME_KEY) ?? "NO_STORED_THEME";
+  let storedName: ThemeName = "default";
+
+  if (isValidThemeName(storedNameInStorage)) {
+    storedName = storedNameInStorage;
+  }
   const storedMode =
     (localStorage.getItem(THEME_MODE_KEY) as ThemeMode) || "system";
 
@@ -53,8 +62,10 @@ export const ThemeProvider = ({ children }: ThemeProviderProps) => {
   const [isDark, setIsDark] = useState<boolean>(initial.isDark);
 
   const setTheme = (name: ThemeName) => {
-    setThemeName(name);
-    localStorage.setItem(THEME_NAME_KEY, name);
+    if (isValidThemeName(name)) {
+      setThemeName(name);
+      localStorage.setItem(THEME_NAME_KEY, name);
+    }
   };
 
   const setMode = (newMode: ThemeMode) => {
